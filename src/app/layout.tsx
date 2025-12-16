@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import UserSync from "@/components/UserSync";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-  
     <ClerkProvider
       appearance={{
         variables: {
@@ -38,7 +38,10 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
+        >
+          <UserSync />
           {children}
         </body>
       </html>
